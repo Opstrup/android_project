@@ -6,11 +6,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tictactoe.MainActivity" >
+    tools:context="com.example.tictactoe.MainActivity"
+    android:background="#FF7F24" >
 
     <TextView
+        android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/welcome" />
+
+    <Button
+        android:id="@+id/butComputer"
+        android:layout_width="1000dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Welcome"
+        android:layout_marginTop="96dp"
+        android:background="#000000"
+        android:longClickable="true"
+        android:text="Play vs Computer"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
