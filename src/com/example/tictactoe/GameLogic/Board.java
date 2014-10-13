@@ -25,45 +25,56 @@ public class Board implements IBoard
 	@Override
 	public Boolean hasWinner() 
 	{
-		int verticalLine = 0;
-		int horizontalLine = 0;
+		//Horizontal check
+		if (CheckWinnerStraightlines(1)) 
+			return true;
 		
-		// Check vertical win
-		for (int i = 0; i < 3; i++) 
+		//Vertical check
+		if (CheckWinnerStraightlines(3))
+			return true;
+		
+		//Diagonal check (0-8)		
+		if (CheckWinnerDiagonalLines(0, 4))
+			return true;
+		
+		//Diagonal check (2-6)
+		if (CheckWinnerDiagonalLines(2, 2))
+			return true;
+		
+		return false;
+	}
+	
+	/*
+	 * Helper function:
+	 * Check the straight lines on the board for a win.
+	 */
+	private Boolean CheckWinnerStraightlines(int offset)
+	{
+		int index = 0;		
 		{
-			if (_board.get(verticalLine).toString() == _board.get(verticalLine+1).toString() &&
-				_board.get(verticalLine).toString() == _board.get(verticalLine+2).toString()) 
+			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+				_board.get(index).toString() != "EMPTY") 
 			{
 				return true;
 			}
-			verticalLine += 3;
+			index += 3;
 		}
-		
-		//Check horizontal win
-		for (int i = 0; i < 3; i++) 
-		{			
-			if (_board.get(horizontalLine).toString() == _board.get(horizontalLine+3).toString() &&
-				_board.get(horizontalLine).toString() == _board.get(horizontalLine+6).toString()) 
+		return false;
+	}
+	
+	/*
+	 * Helper function:
+	 * Check the diagonal lines on the board for a win.
+	 */
+	private Boolean CheckWinnerDiagonalLines(int index, int offset)
+	{
+		if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+			_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+			_board.get(index).toString() != "EMPTY") 
 			{
 				return true;
 			}
-			horizontalLine += 3;
-		}
-		
-		//Check diagonal win 0 - 8
-		if (_board.get(verticalLine).toString() == _board.get(verticalLine+4).toString() &&
-			_board.get(verticalLine).toString() == _board.get(verticalLine+8).toString()) 
-		{
-			return true;
-		}
-		
-		//Check diagonal win 2 - 6
-		if (_board.get(verticalLine+2).toString() == _board.get(verticalLine+4).toString() &&
-			_board.get(verticalLine+2).toString() == _board.get(verticalLine+6).toString()) 
-		{
-			return true;
-		}
-		
 		return false;
 	}
 	
@@ -106,10 +117,10 @@ public class Board implements IBoard
 		
 		if (emptyFlag == true) 
 		{
-			return true;
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 
 }
