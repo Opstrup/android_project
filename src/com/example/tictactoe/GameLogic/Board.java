@@ -2,7 +2,11 @@ package com.example.tictactoe.GameLogic;
 
 public class Board implements IBoard
 {
-
+	public Board(int boardSize)
+	{
+		
+	}	
+	
 	@Override
 	public Boolean hasWinner() 
 	{
