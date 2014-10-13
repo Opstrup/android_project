@@ -25,14 +25,46 @@ public class Board implements IBoard
 	@Override
 	public Boolean hasWinner() 
 	{
+		int verticalLine = 0;
+		int horizontalLine = 0;
+		
 		// Check vertical win
 		for (int i = 0; i < 3; i++) 
 		{
-			int verticalLine = 0;
-
+			if (_board.get(verticalLine).toString() == _board.get(verticalLine+1).toString() &&
+				_board.get(verticalLine).toString() == _board.get(verticalLine+2).toString()) 
+			{
+				return true;
+			}
+			verticalLine += 3;
 		}
 		
-		return null;
+		//Check horizontal win
+		for (int i = 0; i < 3; i++) 
+		{			
+			if (_board.get(horizontalLine).toString() == _board.get(horizontalLine+3).toString() &&
+				_board.get(horizontalLine).toString() == _board.get(horizontalLine+6).toString()) 
+			{
+				return true;
+			}
+			horizontalLine += 3;
+		}
+		
+		//Check diagonal win 0 - 8
+		if (_board.get(verticalLine).toString() == _board.get(verticalLine+4).toString() &&
+			_board.get(verticalLine).toString() == _board.get(verticalLine+8).toString()) 
+		{
+			return true;
+		}
+		
+		//Check diagonal win 2 - 6
+		if (_board.get(verticalLine+2).toString() == _board.get(verticalLine+4).toString() &&
+			_board.get(verticalLine+2).toString() == _board.get(verticalLine+6).toString()) 
+		{
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/*
