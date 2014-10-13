@@ -1,5 +1,6 @@
 package com.example.tictactoe.GameLogic;
 
-public enum BotTypeEnum {
+public enum BotTypeEnum 
+{
 	RANDOMBOT, TERMINATORBOT
 }
