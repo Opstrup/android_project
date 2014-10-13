@@ -27,6 +27,7 @@
         android:background="#000000"
         android:longClickable="true"
         android:text="Play vs Computer"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF" 
+        android:onClick="StartSinglePlayer"/>
 
 </RelativeLayout>

@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="board">board</string>
     <string name="welcome" > Welcome to the TicTacToe app </string>
+    <string name="gameType" > GameType: </string>
   
 
 </resources>

@@ -7,7 +7,7 @@
      >
 
     <TextView
-        android:id="@+id/1Player"
+        android:id="@+id/OnePlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,10 +25,11 @@
         android:layout_marginTop="28dp"
         android:background="#000000"
         android:text="Random!"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:onClick="StartRandomGame" />
 
     <Button
-        android:id="@+id/Terminator!"
+        android:id="@+id/Terminator"
         android:layout_width="1000dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -36,13 +37,14 @@
         android:layout_marginTop="20dp"
         android:background="#000000"
         android:text="Terminator"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF" 
+        android:onClick="StartTerminatorGame"/>
 
     <TextView
         android:id="@+id/selectDifficult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/1Player"
+        android:layout_below="@+id/OnePlayer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
         android:text="Select difficulty"
