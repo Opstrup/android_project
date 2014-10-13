@@ -11,7 +11,7 @@ public class TicTacToeGame
 		
 		if (botTypeEnum.toString() == "RANDOMBOT")
 		{
-			_theBot = new RandomBot();
+			//_theBot = new RandomBot();
 		}
 	}
 	
