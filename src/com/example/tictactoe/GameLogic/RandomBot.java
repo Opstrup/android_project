@@ -10,7 +10,7 @@ public class RandomBot implements IBot
 	}
 	
 	@Override
-	public void move(IBoard theBoard) 
+	public int move(IBoard theBoard) 
 	{
 		
 		int gridSize = 8;
@@ -21,6 +21,8 @@ public class RandomBot implements IBot
 		{
 			locationOnBoard = (int )(Math.random() * gridSize + gridMin);
 		}
+		
+		return locationOnBoard;
 	}
 
 }
