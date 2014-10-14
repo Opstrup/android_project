@@ -4,7 +4,7 @@ public class RandomBot implements IBot
 {
 	BoardFieldEnum _playerType;
 	
-	public RandomBot (BoardFieldEnum playerType)
+	public RandomBot(BoardFieldEnum playerType)
 	{
 		_playerType = playerType;
 	}
