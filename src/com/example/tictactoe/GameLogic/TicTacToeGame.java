@@ -88,8 +88,8 @@ public class TicTacToeGame implements ITicTacToeGame
 	}
 
 	@Override
-	public void UpdateBoard(int locationOnBoard) 
+	public Boolean UpdateBoard(int locationOnBoard) 
 	{
-		_theBoard.UpdateBoard(_player, locationOnBoard);
+		return _theBoard.UpdateBoard(_player, locationOnBoard);
 	}
 }

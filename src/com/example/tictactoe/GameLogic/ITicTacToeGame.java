@@ -12,5 +12,5 @@ public interface ITicTacToeGame
 	BoardFieldEnum whosTurn();
 	Boolean HasWinner();
 	Boolean BoardIsFull();
-	void UpdateBoard(int locationOnBoard);
+	Boolean UpdateBoard(int locationOnBoard);
 }
