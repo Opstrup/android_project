@@ -25,6 +25,8 @@ public class SinglePlayerGameActivity extends Activity
     boolean PlayerMove = true;
     ImageButton image;
     int imagearray[] = {R.id.ImageButton00,R.id.ImageButton01,R.id.ImageButton02,R.id.ImageButton03,R.id.ImageButton04,R.id.ImageButton05,R.id.ImageButton06,R.id.ImageButton07,R.id.ImageButton08};
+    boolean correctMove = false;
+    
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -40,8 +42,8 @@ public class SinglePlayerGameActivity extends Activity
         
         if(gameTypeNumber == 1)
         {
-        	theBot = new RandomBot(BoardFieldEnum.PLAYER_X);
-        	theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_O);
+        	theBot = new RandomBot(BoardFieldEnum.PLAYER_O);
+        	theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_X);
         	opponentText.setText("Random opponent");
         }
         else
@@ -52,17 +54,10 @@ public class SinglePlayerGameActivity extends Activity
 	
 	
 	
-	public void SetButton(View view) 
+	public void SetButton(View view) throws InterruptedException 
 	{
+		Tic_or_Toe = R.drawable.kryds;
 		
-//		if (theGame.whosTurn() == theGame.getPlayerType())
-//		{
-//			Tic_or_Toe = R.drawable.bolle;
-//		}
-//		else
-//		{
-//			Tic_or_Toe = R.drawable.kryds;
-//		}
 				
 		switch (view.getId()) {
 		case R.id.ImageButton00:
@@ -70,7 +65,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(0) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-								
+				correctMove = true;								
 			}
 			break;
 			
@@ -79,7 +74,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(1) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-				
+				correctMove = true;
 			}
 			break;
 		
@@ -88,7 +83,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(2) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-							
+				correctMove = true;			
 			}
 			break;
 		
@@ -97,7 +92,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(3) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-						
+				correctMove = true;		
 			}
 			break;
 			
@@ -106,7 +101,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(4) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-								
+				correctMove = true;				
 			}
 			break;
 			
@@ -115,7 +110,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(5) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-								
+				correctMove = true;				
 			}
 			break;
 			
@@ -123,7 +118,8 @@ public class SinglePlayerGameActivity extends Activity
 			image = (ImageButton) findViewById(R.id.ImageButton06);
 			if( theGame.UpdateBoard(6) == true) 
 			{ 
-				image.setImageResource(Tic_or_Toe);			
+				image.setImageResource(Tic_or_Toe);
+				correctMove = true;
 			}
 			break;
 			
@@ -132,7 +128,7 @@ public class SinglePlayerGameActivity extends Activity
 			if( theGame.UpdateBoard(7) == true) 
 			{ 
 				image.setImageResource(Tic_or_Toe);
-								
+				correctMove = true;				
 			}
 			break;
 			
@@ -140,7 +136,8 @@ public class SinglePlayerGameActivity extends Activity
 			image = (ImageButton) findViewById(R.id.ImageButton08);
 			if( theGame.UpdateBoard(8) == true) 
 			{ 
-				image.setImageResource(Tic_or_Toe);				
+				image.setImageResource(Tic_or_Toe);
+				correctMove = true;
 			}
 			break;
 
@@ -149,44 +146,80 @@ public class SinglePlayerGameActivity extends Activity
 		}
 		
 		//Check for winner or Draw
+		checkBoard();
+		theGame.changeTurn();
+		
+		// Valid turn.
+		
+		if (correctMove == true) {
+			// bots turn
+			
+			image = (ImageButton) findViewById(imagearray[theGame.moveBot()]);
+			image.setImageResource(R.drawable.bolle);
+			checkBoard();
+			correctMove = false;
+		}
+			
+		
+		
+		// Player turn
+		theGame.changeTurn();
+    }
+	
+	public void cleanGUI()
+	{
+		for (int i = 0; i <= 8; i++) {
+			image = (ImageButton) findViewById(imagearray[i]);
+			
+			image.setImageResource(R.drawable.ingenting);
+			
+		}
+	}
+	public void checkBoard()
+	{
 		if(theGame.HasWinner()== true || theGame.BoardIsFull() == true)
 		{
-			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_O)
+			correctMove = false;
+			
+			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_X)
 			{
 			Context context = getApplicationContext();
-			CharSequence text = "Pladen er fuld / der er fundes en vinder";
+			CharSequence text = "Kryds Vinder";
 			int duration = Toast.LENGTH_LONG;
 			
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 			
 			theGame.newGame();
+			cleanGUI();
+			
 			
 			}
-			else
-			{
+			else if (theGame.WhoWon() == BoardFieldEnum.PLAYER_O) {
 				Context context = getApplicationContext();
-				CharSequence text = "Pladen er fuld / der er fundes en vinder";
+				CharSequence text = "Bolle Vinder";
 				int duration = Toast.LENGTH_LONG;
 				
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
+				
+				theGame.newGame();
+				cleanGUI();
+			}
+			else
+			{
+				Context context = getApplicationContext();
+				CharSequence text = "Pladen er fuld";
+				int duration = Toast.LENGTH_LONG;
+				
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+				
+				theGame.newGame();
+				cleanGUI();
 			}
 		}
-		
-		theGame.changeTurn();
-		
-		//move = theGame.moveBot();
-		//String moveString = ("ImageButton0" + move);
-		//image = (ImageButton) findViewById(R.id.ImageButton00);
-		//int imageTag;
-		
-		image = (ImageButton) findViewById(imagearray[theGame.moveBot()]);
-		
-		image.setImageResource(R.drawable.bolle);	
-		
-		//Update GUI
-		//Check for winner or Draw
-		theGame.changeTurn();
-    }
+	}
+	
+	
 }
