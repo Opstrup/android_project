@@ -1,209 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tictactoe.MainActivity"
-    android:background="#FF7F24" >
-
-    <ImageView
-        android:id="@+id/Board"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="40dp"
-        android:contentDescription="@string/board"
-        android:gravity="center_horizontal"
-        android:background="#FF7F24"
-        android:src="@drawable/board" />
-
-    <ImageButton
-        android:id="@+id/ImageButton05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ImageButton08"
-        android:layout_alignLeft="@+id/ImageButton08"
-        android:layout_marginBottom="24dp"
-        android:background="@null"
-        android:onClick="Setpiece"
-        android:src="@drawable/bolle" />
-
-    <ImageButton
-        android:id="@+id/ImageButton04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ImageButton01"
-        android:layout_alignTop="@+id/ImageButton05"
-        android:background="@null"
-        android:src="@drawable/kryds" />
-
-    <ImageButton
-        android:id="@+id/ImageButton03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ImageButton06"
-        android:layout_alignTop="@+id/ImageButton04"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
-    <ImageButton
-        android:id="@+id/ImageButton02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ImageButton05"
-        android:layout_alignTop="@+id/ImageButton01"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
-    <ImageButton
-        android:id="@+id/ImageButton08"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ImageButton07"
-        android:layout_marginLeft="22dp"
-        android:layout_toRightOf="@+id/ImageButton07"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Board"
-        android:layout_below="@+id/Board"
-        android:layout_marginTop="33dp" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal" >
-
-            <TextView
-                android:id="@+id/Player"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Player"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/Roundswon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Rounds won"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/Whoisplaying"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Turn"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal" >
-
-            <TextView
-                android:id="@+id/human"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Human" />
-
-            <TextView
-                android:id="@+id/humanCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:gravity="center|center_vertical"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/ties2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="X" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal" >
-
-            <TextView
-                android:id="@+id/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Android bot" />
-
-            <TextView
-                android:id="@+id/androidCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:gravity="center|center_vertical"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/ties3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text=" " />
-        </TableRow>
-    </TableLayout>
-
-    <ImageButton
-        android:id="@+id/ImageButton01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/Board"
-        android:layout_centerHorizontal="true"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
-    <ImageButton
-        android:id="@+id/ImageButton07"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Board"
-        android:layout_alignLeft="@+id/ImageButton04"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
-    <ImageButton
-        android:id="@+id/ImageButton06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Board"
-        android:layout_below="@+id/ImageButton05"
-        android:layout_marginLeft="20dp"
-        android:background="@null"
-        android:src="@drawable/bolle" />
-
+    tools:context=".MainActivity"
+    android:background="#FF7F24"
+    >
+    
+    
     <TextView
         android:id="@+id/gameType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Board"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:text="@string/gameType" />
 
@@ -211,19 +19,120 @@
         android:id="@+id/gameType2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/gameType"
-        android:layout_alignBottom="@+id/gameType"
-        android:layout_toRightOf="@+id/imageButton00"
         android:text="" />
+ 
+ 
+<LinearLayout
+    android:orientation="vertical"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/imageButton00"
+	<GridLayout
+	    android:id="@+id/GridLayout1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="250dp"
+	    android:layout_gravity="center_vertical"
+	    android:background="@drawable/board"
+	    android:columnCount="3"
+	    android:gravity="center"
+	    android:orientation="horizontal"
+	    android:rowCount="3"
+	    tools:context=".GridXMLActivity" >
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ImageButton03"
-        android:layout_alignTop="@+id/Board"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
         android:background="@null"
-        android:src="@drawable/bolle" />
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
+	    
+	    <ImageButton
+        android:id="@+id/ImageButton08"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:onClick="SetButton"
+        android:src="@drawable/ingenting" />
 
-</RelativeLayout>
+	    
+	    
+	</GridLayout>
+	
+</LinearLayout>
+
+</LinearLayout>
