@@ -25,4 +25,10 @@ public class RandomBot implements IBot
 		return locationOnBoard;
 	}
 
+	@Override
+	public BoardFieldEnum getPlayerType() 
+	{
+		return _playerType;
+	}
+
 }

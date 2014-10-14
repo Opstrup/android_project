@@ -10,4 +10,7 @@ public interface ITicTacToeGame
 	int moveBot();
 	void changeTurn();
 	BoardFieldEnum whosTurn();
+	Boolean HasWinner();
+	Boolean BoardIsFull();
+	void UpdateBoard(int locationOnBoard);
 }
