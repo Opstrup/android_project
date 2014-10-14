@@ -8,6 +8,7 @@ public class TicTacToeGame implements ITicTacToeGame
 	int _playerScore = 0;
 	int _rounds = 0;
 	BoardFieldEnum _player;
+	BoardFieldEnum _whosTurn;
 	
 	/*
 	 * Constructor for TicTacToeGame
@@ -18,6 +19,7 @@ public class TicTacToeGame implements ITicTacToeGame
 		_theBoard = new Board(boardSize);
 		_player = player;
 		_theBot = botType;
+		_whosTurn = BoardFieldEnum.PLAYER_X;
 	}
 	
 	@Override
@@ -45,26 +47,49 @@ public class TicTacToeGame implements ITicTacToeGame
 	}
 
 	@Override
-	public BoardFieldEnum WhoWon() {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardFieldEnum WhoWon() 
+	{
+		if (_theBoard.WhoWon() == _theBot.getPlayerType()) 
+			_botScore++;
+		else
+			_playerScore++;
+		return _theBoard.WhoWon();
 	}
 
 	@Override
-	public int moveBot() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int moveBot() 
+	{
+		return _theBot.move(_theBoard);
 	}
 
 	@Override
-	public void changeTurn() {
-		// TODO Auto-generated method stub
-		
+	public void changeTurn() 
+	{
+		if (_whosTurn == BoardFieldEnum.PLAYER_O)
+			_whosTurn = BoardFieldEnum.PLAYER_X;
 	}
 
 	@Override
-	public BoardFieldEnum whosTurn() {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardFieldEnum whosTurn() 
+	{
+		return _whosTurn;
+	}
+
+	@Override
+	public Boolean HasWinner() 
+	{
+		return _theBoard.HasWinner();
+	}
+
+	@Override
+	public Boolean BoardIsFull() 
+	{
+		return _theBoard.BoardIsFull();
+	}
+
+	@Override
+	public Boolean UpdateBoard(int locationOnBoard) 
+	{
+		return _theBoard.UpdateBoard(_player, locationOnBoard);
 	}
 }
