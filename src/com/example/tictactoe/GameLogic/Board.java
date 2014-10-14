@@ -166,7 +166,7 @@ public class Board implements IBoard
 			}
 			return BoardFieldEnum.PLAYER_X;
 		}
-		return null;
+		return BoardFieldEnum.DRAW;
 	}
 	
 	/*
