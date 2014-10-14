@@ -200,6 +200,7 @@ public class SinglePlayerGameActivity extends Activity
 
 				theGame.newGame();
 				cleanGUI();
+				theGame.changeTurn();
 			
 			
 			}
@@ -217,6 +218,7 @@ public class SinglePlayerGameActivity extends Activity
 				
 				theGame.newGame();
 				cleanGUI();
+				theGame.changeTurn();
 			}
 			else
 			{
@@ -229,6 +231,7 @@ public class SinglePlayerGameActivity extends Activity
 				
 				theGame.newGame();
 				cleanGUI();
+				theGame.changeTurn();
 			}
 		}
 	}
