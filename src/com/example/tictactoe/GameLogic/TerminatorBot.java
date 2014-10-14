@@ -64,6 +64,8 @@ public class TerminatorBot implements IBot
 					
 				}
 			}
+		    
+		    return 0;
 //		    for empty_field in board.get_empty_squares():
 //		        copy_board = board.clone()
 //		        copy_board.move(empty_field[0], empty_field[1], player)
