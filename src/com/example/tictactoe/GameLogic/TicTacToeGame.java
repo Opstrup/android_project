@@ -92,4 +92,10 @@ public class TicTacToeGame implements ITicTacToeGame
 	{
 		return _theBoard.UpdateBoard(_player, locationOnBoard);
 	}
+
+	@Override
+	public BoardFieldEnum getPlayerType() 
+	{
+		return _player;
+	}
 }

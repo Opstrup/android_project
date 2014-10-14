@@ -13,4 +13,5 @@ public interface ITicTacToeGame
 	Boolean HasWinner();
 	Boolean BoardIsFull();
 	Boolean UpdateBoard(int locationOnBoard);
+	BoardFieldEnum getPlayerType();
 }
