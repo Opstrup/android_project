@@ -51,7 +51,7 @@ public class TicTacToeGame implements ITicTacToeGame
 	{
 		if (_theBoard.WhoWon() == _theBot.getPlayerType()) 
 			_botScore++;
-		else
+		else if (_theBoard.WhoWon() == _player)
 			_playerScore++;
 		return _theBoard.WhoWon();
 	}
