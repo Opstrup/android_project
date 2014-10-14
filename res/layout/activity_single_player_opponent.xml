@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="#FF7F24"
      >
+<<<<<<< HEAD
 
     <TextView
         android:id="@+id/1Player"
@@ -17,6 +18,11 @@
         android:text="Single Player mode!"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+=======
+	
+    
+       
+>>>>>>> 7c9f94a494848cd22eab041ceceea3a5564d8791
     <Button
         android:id="@+id/randomOpponent"
         android:layout_width="1000dp"
@@ -25,11 +31,15 @@
         android:layout_below="@+id/selectDifficult"
         android:layout_marginTop="28dp"
         android:background="#000000"
+<<<<<<< HEAD
         android:text="Random!"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/Terminator!"
+=======
+        android:text="Random"
+>>>>>>> 7c9f94a494848cd22eab041ceceea3a5564d8791
         android:textColor="#FFFFFF"
         android:onClick="StartRandomGame" />
 
@@ -50,11 +60,26 @@
         android:id="@+id/selectDifficult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_below="@+id/1Player"
+=======
+>>>>>>> 7c9f94a494848cd22eab041ceceea3a5564d8791
         android:layout_below="@+id/OnePlayer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
         android:text="Select difficulty"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/singlePlayerMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/singlePlayerMode" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+   
 
 </RelativeLayout>

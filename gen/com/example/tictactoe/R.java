@@ -1092,10 +1092,10 @@ containing a value of this type.
         public static final int ImageButton06=0x7f050044;
         public static final int ImageButton07=0x7f050047;
         public static final int ImageButton08=0x7f050040;
-        public static final int OnePlayer=0x7f050057;
+        public static final int OnePlayer=0x7f05005a;
         public static final int Player=0x7f05004a;
         public static final int Roundswon=0x7f05004b;
-        public static final int Terminator=0x7f05005a;
+        public static final int Terminator=0x7f050059;
         public static final int Welcome=0x7f05003c;
         public static final int Whoisplaying=0x7f05004c;
         public static final int action_bar=0x7f05001c;
@@ -1109,7 +1109,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05005b;
+        public static final int action_settings=0x7f05005c;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int android=0x7f050052;
@@ -1145,7 +1145,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int randomOpponent=0x7f050058;
+        public static final int randomOpponent=0x7f050057;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1156,11 +1156,12 @@ containing a value of this type.
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
-        public static final int selectDifficult=0x7f050059;
+        public static final int selectDifficult=0x7f050058;
         public static final int shortcut=0x7f05002e;
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
+        public static final int singlePlayerMode=0x7f05005b;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
@@ -1280,6 +1281,7 @@ containing a value of this type.
         public static final int board=0x7f0a0010;
         public static final int gameType=0x7f0a0012;
         public static final int hello_world=0x7f0a000e;
+        public static final int singlePlayerMode=0x7f0a0013;
         public static final int welcome=0x7f0a0011;
     }
     public static final class style {
