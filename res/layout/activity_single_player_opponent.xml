@@ -5,21 +5,9 @@
     android:orientation="vertical"
     android:background="#FF7F24"
      >
-
-    <TextView
-<<<<<<< HEAD
-        android:id="@+id/1Player"
-=======
-        android:id="@+id/OnePlayer"
->>>>>>> a8fdcdc6196ed5a1ccff5a5dc50f467f99dfe90e
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Single Player mode!"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+	
+    
+       
     <Button
         android:id="@+id/randomOpponent"
         android:layout_width="1000dp"
@@ -28,19 +16,12 @@
         android:layout_below="@+id/selectDifficult"
         android:layout_marginTop="28dp"
         android:background="#000000"
-        android:text="Random!"
-<<<<<<< HEAD
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/Terminator!"
-=======
+        android:text="Random"
         android:textColor="#FFFFFF"
         android:onClick="StartRandomGame" />
 
     <Button
         android:id="@+id/Terminator"
->>>>>>> a8fdcdc6196ed5a1ccff5a5dc50f467f99dfe90e
         android:layout_width="1000dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -48,25 +29,30 @@
         android:layout_marginTop="20dp"
         android:background="#000000"
         android:text="Terminator"
-<<<<<<< HEAD
-        android:textColor="#FFFFFF" />
-=======
         android:textColor="#FFFFFF" 
         android:onClick="StartTerminatorGame"/>
->>>>>>> a8fdcdc6196ed5a1ccff5a5dc50f467f99dfe90e
+
 
     <TextView
         android:id="@+id/selectDifficult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_below="@+id/1Player"
-=======
         android:layout_below="@+id/OnePlayer"
->>>>>>> a8fdcdc6196ed5a1ccff5a5dc50f467f99dfe90e
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
         android:text="Select difficulty"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/singlePlayerMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/singlePlayerMode" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+   
 
 </RelativeLayout>
