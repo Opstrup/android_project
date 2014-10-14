@@ -2,7 +2,9 @@ package com.example.tictactoe.GameLogic;
 
 public interface IBoard 
 {
-	Boolean hasWinner();
+	Boolean HasWinner();
 	Boolean UpdateBoard(BoardFieldEnum player, int locationOnBoard);
 	Boolean BoardIsFull();
+	void CleanBoard();
+	BoardFieldEnum WhoWon();
 }

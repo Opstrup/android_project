@@ -22,8 +22,12 @@ public class Board implements IBoard
 		}
 	}	
 	
+	/*
+	 * Checks if there is a winner on the board
+	 * returns true if there is a winner.
+	 */
 	@Override
-	public Boolean hasWinner() 
+	public Boolean HasWinner() 
 	{
 		//Horizontal check
 		if (CheckWinnerStraightlines(1)) 
@@ -121,6 +125,32 @@ public class Board implements IBoard
 		}
 		
 		return true;
+	}
+	
+	/*
+	 * Clean Board
+	 * Returns the board to initial state
+	 * all locations on the board is empty
+	 */
+	@Override
+	public void CleanBoard() 
+	{
+		int boardSize = _board.size();
+		_board = null;
+		
+		_board = new ArrayList<BoardFieldEnum>();
+		
+		for (int i = 0; i < boardSize; i++) 
+		{
+			_board.add(BoardFieldEnum.EMPTY);
+		}
+		
+	}
+
+	@Override
+	public BoardFieldEnum WhoWon() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
