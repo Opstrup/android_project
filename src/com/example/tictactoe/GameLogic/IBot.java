@@ -3,5 +3,5 @@ import com.example.tictactoe.GameLogic.IBoard;
 
 public interface IBot 
 {
-	int move(IBoard theBoard);
+	void move(IBoard theBoard);
 }
