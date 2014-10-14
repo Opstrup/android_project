@@ -30,11 +30,11 @@ public class Board implements IBoard
 	public Boolean HasWinner() 
 	{
 		//Horizontal check
-		if (CheckWinnerStraightlines(1)) 
+		if (CheckWinnerHorizontalLines(1)) 
 			return true;
 		
 		//Vertical check
-		if (CheckWinnerStraightlines(3))
+		if (CheckWinnerVerticalLines(3))
 			return true;
 		
 		//Diagonal check (0-8)		
@@ -52,10 +52,11 @@ public class Board implements IBoard
 	 * Helper function:
 	 * Check the straight lines on the board for a win.
 	 */
-	private Boolean CheckWinnerStraightlines(int offset)
+	private Boolean CheckWinnerHorizontalLines(int offset)
 	{
 		int index = 0;		
-		{
+		while(index < 6) {
+
 			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
 				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
 				_board.get(index).toString() != "EMPTY") 
@@ -63,6 +64,22 @@ public class Board implements IBoard
 				return true;
 			}
 			index += 3;
+		}
+		return false;
+	}
+	
+	private Boolean CheckWinnerVerticalLines(int offset)
+	{
+		int index = 0;		
+		while(index < 2) {
+
+			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+				_board.get(index).toString() != "EMPTY") 
+			{
+				return true;
+			}
+			index ++;
 		}
 		return false;
 	}
@@ -157,8 +174,8 @@ public class Board implements IBoard
 	{
 		if (this.HasWinner() == true) 
 		{
-			if (CheckWhoWonStraightLines(1, BoardFieldEnum.PLAYER_O) || 
-				CheckWhoWonStraightLines(3, BoardFieldEnum.PLAYER_O) ||
+			if (CheckWhoWonHorizontalLines(1, BoardFieldEnum.PLAYER_O) || 
+				CheckWhoWonVerticalLines(3, BoardFieldEnum.PLAYER_O) ||
 				CheckWhoWonDiagonalLines(0, 4, BoardFieldEnum.PLAYER_O) || 
 				CheckWhoWonDiagonalLines(2, 2, BoardFieldEnum.PLAYER_O)) 
 			{
@@ -173,15 +190,34 @@ public class Board implements IBoard
 	 * Helper function:
 	 * Checks straight lines for who won.
 	 */
-	private Boolean CheckWhoWonStraightLines(int offset, BoardFieldEnum player)
+	private Boolean CheckWhoWonHorizontalLines(int offset, BoardFieldEnum player)
 	{
 		int index = 0;
+		while(index < 6) {
 		if (_board.get(index).toString() == _board.get(index+offset).toString() &&
 				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
 				_board.get(index).toString() == player.toString()) 
 				{
 					return true;
 				}
+				index += 3;
+		}
+		return false;
+	}
+		
+	private Boolean CheckWhoWonVerticalLines(int offset, BoardFieldEnum player)
+	{
+		int index = 0;		
+		while(index < 2) {
+
+			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+				_board.get(index).toString() == player.toString())
+			{
+				return true;
+			}
+			index ++;
+		}
 		return false;
 	}
 	
@@ -193,7 +229,7 @@ public class Board implements IBoard
 	{
 		if (_board.get(index).toString() == _board.get(index+offset).toString() &&
 			_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
-			_board.get(index).toString() != player.toString()) 
+			_board.get(index).toString() == player.toString()) 
 			{
 				return true;
 			}
