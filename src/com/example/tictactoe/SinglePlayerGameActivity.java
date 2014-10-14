@@ -3,6 +3,9 @@ package com.example.tictactoe;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SinglePlayerGameActivity extends Activity 
@@ -29,11 +32,14 @@ public class SinglePlayerGameActivity extends Activity
         {
         	opponentText.setText("Terminator Opponent");
         }
-        
-        
-        
-        
-        //setContentView(txtView);        
-        
+    }
+	
+	
+	public void Setpiece(View view) {
+		
+		ImageButton image1 = (ImageButton) findViewById(R.id.ImageButton05);
+    	
+		image1.setImageResource(R.drawable.kryds);
+		
     }
 }
