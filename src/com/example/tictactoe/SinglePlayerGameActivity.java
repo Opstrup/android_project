@@ -28,6 +28,7 @@ public class SinglePlayerGameActivity extends Activity
     boolean correctMove = false;
     
     
+    
 	@Override
     protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -177,21 +178,28 @@ public class SinglePlayerGameActivity extends Activity
 	}
 	public void checkBoard()
 	{
+		
+		String score;
+		
 		if(theGame.HasWinner()== true || theGame.BoardIsFull() == true)
 		{
 			correctMove = false;
 			
 			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_X)
 			{
-			Context context = getApplicationContext();
-			CharSequence text = "Kryds Vinder";
-			int duration = Toast.LENGTH_LONG;
-			
-			Toast toast = Toast.makeText(context, text, duration);
-			toast.show();
-			
-			theGame.newGame();
-			cleanGUI();
+				Context context = getApplicationContext();
+				CharSequence text = "Kryds Vinder";
+				int duration = Toast.LENGTH_LONG;
+
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+
+				score = Integer.toString(theGame.getPlayerScore());
+				TextView humanView = (TextView) findViewById(R.id.humanCount);
+				humanView.setText(score);
+
+				theGame.newGame();
+				cleanGUI();
 			
 			
 			}
@@ -202,6 +210,10 @@ public class SinglePlayerGameActivity extends Activity
 				
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
+				
+				score = Integer.toString(theGame.getBotScore());
+				TextView botView = (TextView) findViewById(R.id.androidCount);
+				botView.setText(score);
 				
 				theGame.newGame();
 				cleanGUI();
