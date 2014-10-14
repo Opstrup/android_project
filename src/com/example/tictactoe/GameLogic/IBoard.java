@@ -1,5 +1,7 @@
 package com.example.tictactoe.GameLogic;
 
+import java.util.List;
+
 public interface IBoard 
 {
 	Boolean HasWinner();
@@ -7,4 +9,6 @@ public interface IBoard
 	Boolean BoardIsFull();
 	void CleanBoard();
 	BoardFieldEnum WhoWon();
+	IBoard Clone();
+	List<?> GetEmptySquares();
 }

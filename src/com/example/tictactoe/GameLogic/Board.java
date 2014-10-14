@@ -55,7 +55,7 @@ public class Board implements IBoard
 	private Boolean CheckWinnerHorizontalLines(int offset)
 	{
 		int index = 0;		
-		while(index < 6) {
+		while(index <= 6) {
 
 			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
 				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
@@ -71,7 +71,7 @@ public class Board implements IBoard
 	private Boolean CheckWinnerVerticalLines(int offset)
 	{
 		int index = 0;		
-		while(index < 2) {
+		while(index <= 2) {
 
 			if (_board.get(index).toString() == _board.get(index+offset).toString() &&
 				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
@@ -236,4 +236,30 @@ public class Board implements IBoard
 		return false;
 	}
 
+	@Override
+	public IBoard Clone() {
+		Board clonedBoard = new Board(this._board.size());
+		clonedBoard.setBoard(this._board);
+		return clonedBoard;
+	}
+
+	@Override
+	public List<?> GetEmptySquares() {
+		List<Integer> resultList = new ArrayList<Integer>();
+		
+		for (int i = 0; i < _board.size(); i++) 
+		{
+			if (_board.get(i) == BoardFieldEnum.EMPTY) 
+			{	
+				resultList.add(i);
+			}
+		}
+		
+		return resultList;
+	}
+	
+	private void setBoard(List<BoardFieldEnum> board)
+	{
+		_board = board;
+	}
 }
