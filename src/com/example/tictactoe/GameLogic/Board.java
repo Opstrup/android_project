@@ -147,10 +147,57 @@ public class Board implements IBoard
 		
 	}
 
+	/*
+	 * WhoWon:
+	 * If there is a winner on the board, 
+	 * checks who is the winner. 
+	 */
 	@Override
-	public BoardFieldEnum WhoWon() {
-		// TODO Auto-generated method stub
+	public BoardFieldEnum WhoWon() 
+	{
+		if (this.HasWinner() == true) 
+		{
+			if (CheckWhoWonStraightLines(1, BoardFieldEnum.PLAYER_O) || 
+				CheckWhoWonStraightLines(3, BoardFieldEnum.PLAYER_O) ||
+				CheckWhoWonDiagonalLines(0, 4, BoardFieldEnum.PLAYER_O) || 
+				CheckWhoWonDiagonalLines(2, 2, BoardFieldEnum.PLAYER_O)) 
+			{
+				return BoardFieldEnum.PLAYER_O;
+			}
+			return BoardFieldEnum.PLAYER_X;
+		}
 		return null;
+	}
+	
+	/*
+	 * Helper function:
+	 * Checks straight lines for who won.
+	 */
+	private Boolean CheckWhoWonStraightLines(int offset, BoardFieldEnum player)
+	{
+		int index = 0;
+		if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+				_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+				_board.get(index).toString() == player.toString()) 
+				{
+					return true;
+				}
+		return false;
+	}
+	
+	/*
+	 * Helper function:
+	 * Checks diagonal lines for who won.
+	 */
+	private Boolean CheckWhoWonDiagonalLines(int index, int offset, BoardFieldEnum player)
+	{
+		if (_board.get(index).toString() == _board.get(index+offset).toString() &&
+			_board.get(index).toString() == _board.get(index+offset+offset).toString() &&
+			_board.get(index).toString() != player.toString()) 
+			{
+				return true;
+			}
+		return false;
 	}
 
 }
