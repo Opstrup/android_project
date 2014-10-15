@@ -6,11 +6,12 @@ import java.util.List;
 public class TerminatorBot implements IBot
 {
 	BoardFieldEnum _playerType;
-	BoardFieldEnum _player = _playerType;
+	BoardFieldEnum _player;
 	
 	public TerminatorBot(BoardFieldEnum playerType)
 	{
 		_playerType = playerType;
+		_player = playerType;
 	}
 	
 	/*
@@ -43,11 +44,11 @@ public class TerminatorBot implements IBot
 		    best_score[1] = -1;
 		    List<Object> moves = new ArrayList<Object>();
 		    List<Integer> score = new ArrayList<Integer>();
-		    
-		    for (Object empty_field : theBoard.GetEmptySquares()) 
+		    		    
+		    for (Integer empty_field : theBoard.GetEmptySquares()) 
 		    {
 		    	IBoard copy_board = theBoard.Clone();
-		    	copy_board.UpdateBoard(_player, 0);
+		    	copy_board.UpdateBoard(_player, empty_field);
 		    	if (_player == _playerType) 
 		    		_player = BoardFieldEnum.PLAYER_X;
 		    	
@@ -61,11 +62,19 @@ public class TerminatorBot implements IBot
 		    	
 		    	for (int i = 0; i < score.size(); i++) 
 		    	{
+					if (_player == BoardFieldEnum.PLAYER_X && best_score[0] <= (int) score.get(i))
+					{
+						best_score[1] = (Integer) moves.get(i);
+					}
 					
+					if (_player == BoardFieldEnum.PLAYER_O && best_score[0] >= (int) score.get(i))
+					{
+						best_score[1] = (Integer) moves.get(i);
+					}
 				}
 			}
 		    
-		    return 0;
+		    return best_score[1];
 //		    for empty_field in board.get_empty_squares():
 //		        copy_board = board.clone()
 //		        copy_board.move(empty_field[0], empty_field[1], player)

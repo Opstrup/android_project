@@ -10,5 +10,5 @@ public interface IBoard
 	void CleanBoard();
 	BoardFieldEnum WhoWon();
 	IBoard Clone();
-	List<?> GetEmptySquares();
+	List<Integer> GetEmptySquares();
 }

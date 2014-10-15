@@ -244,7 +244,7 @@ public class Board implements IBoard
 	}
 
 	@Override
-	public List<?> GetEmptySquares() {
+	public List<Integer> GetEmptySquares() {
 		List<Integer> resultList = new ArrayList<Integer>();
 		
 		for (int i = 0; i < _board.size(); i++) 
