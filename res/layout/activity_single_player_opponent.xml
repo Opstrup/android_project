@@ -1,58 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FF7F24"
-     >
-	
-    
-       
-    <Button
-        android:id="@+id/randomOpponent"
-        android:layout_width="1000dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/selectDifficult"
-        android:layout_marginTop="28dp"
-        android:background="#000000"
-        android:text="Random"
-        android:textColor="#FFFFFF"
-        android:onClick="StartRandomGame" />
-
-    <Button
-        android:id="@+id/Terminator"
-        android:layout_width="1000dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/randomOpponent"
-        android:layout_marginTop="20dp"
-        android:background="#000000"
-        android:text="Terminator"
-        android:textColor="#FFFFFF" 
-        android:onClick="StartTerminatorGame"/>
-
-
-    <TextView
-        android:id="@+id/selectDifficult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/OnePlayer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:text="Select difficulty"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/singlePlayerMode"
-        android:layout_width="wrap_content"
+         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/singlePlayerMode" 
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="@string/singlePlayerMode"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/selectDifficult"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="Select difficulty"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-   
+    
+    
+    
+    <Button
+        android:id="@+id/randomOpponent"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/selectDifficult"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:background="#000000"
+        android:onClick="StartRandomGame"
+        android:text="Random"
+        android:textColor="#FFFFFF" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/Terminator"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:onClick="StartTerminatorGame"
+        android:text="Terminator"
+        android:textColor="#FFFFFF" />
+
+    
+
+</LinearLayout>

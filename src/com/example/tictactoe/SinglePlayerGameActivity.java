@@ -37,23 +37,27 @@ public class SinglePlayerGameActivity extends Activity {
 
 		Intent gameIntent = getIntent();
 
-		String msg = gameIntent
-				.getStringExtra(SinglePlayerOpponentActivity.GameType_Message);
+		String msg = gameIntent.getStringExtra(SinglePlayerOpponentActivity.GameType_Message);
 		int gameTypeNumber = gameIntent.getIntExtra(
 				SinglePlayerOpponentActivity.GameType_Message, 1);
 		TextView opponentText = (TextView) findViewById(R.id.gameType2);
 
-		if (gameTypeNumber == 1) {
+		if (gameTypeNumber == 1) 
+		{
 			theBot = new RandomBot(BoardFieldEnum.PLAYER_O);
 			theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_X);
 			opponentText.setText("Random opponent");
-		} else {
+		} 
+		else 
+		{
 			opponentText.setText("Terminator Opponent");
 		}
 	}
 
-	public void SetButton(View view) throws InterruptedException {
+	public void SetButton(View view) throws InterruptedException 
+	{
 		Tic_or_Toe = R.drawable.kryds;
+		//Tic_or_Toe = R.drawable.bolle;
 
 		switch (view.getId()) {
 		case R.id.ImageButton00:
@@ -134,57 +138,44 @@ public class SinglePlayerGameActivity extends Activity {
 
 		// Check for winner or Draw
 		checkBoard();
-		theGame.changeTurn();
-
-		// Valid turn.
-
-		if (correctMove == true) {
-			// bots turn
-			if (theGame.BoardIsFull() == true) {
-				theGame.newGame();
-				cleanGUI();
-			}
+		
+		// bots turn
+		if (correctMove == true) 
+		{
+//			if (theGame.BoardIsFull() == true) 
+//			{
+//				theGame.newGame();
+//				cleanGUI();
+//			}
 			image = (ImageButton) findViewById(imagearray[theGame.moveBot()]);
 			image.setImageResource(R.drawable.bolle);
 			checkBoard();
 			correctMove = false;
-
 		}
+		
+		//theGame.changeTurn();
 
-		// Player turn
-		theGame.changeTurn();
 	}
 
-	public void cleanGUI() {
-		for (int i = 0; i <= 8; i++) {
+	public void cleanGUI() 
+	{
+		for (int i = 0; i <= 8; i++) 
+		{
 			image = (ImageButton) findViewById(imagearray[i]);
-
 			image.setImageResource(R.drawable.ingenting);
-
 		}
 	}
 
-	// public void checkTurn()
-	// {
-	// if (playerStarted == true) {
-	//
-	// theGame.changeTurn();
-	// playerStarted = false;
-	//
-	// }
-	// else
-	// {
-	// playerStarted = true;
-	// }
-	// }
-
-	public void checkBoard() {
+	public void checkBoard() 
+	{
 		String score;
-		//
-		if (theGame.HasWinner() == true) {
+	
+		if (theGame.HasWinner() == true) 
+		{
 			correctMove = false;
 
-			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_X) {
+			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_X) 
+			{
 				Context context = getApplicationContext();
 				CharSequence text = "Kryds Vinder";
 				int duration = Toast.LENGTH_LONG;
@@ -200,8 +191,10 @@ public class SinglePlayerGameActivity extends Activity {
 				cleanGUI();
 
 				correctMove = true;
-
-			} else {
+			} 
+			
+			else 
+			{
 				Context context = getApplicationContext();
 				CharSequence text = "Bolle Vinder";
 				int duration = Toast.LENGTH_LONG;
@@ -217,15 +210,12 @@ public class SinglePlayerGameActivity extends Activity {
 				cleanGUI();
 
 				correctMove = true;
-
-				// theGame.changeTurn();
 			}
 
-		} else {
-
-		}
-
-		if (theGame.BoardIsFull() == true) {
+		} 
+		
+		if (theGame.BoardIsFull() == true) 
+		{
 			Context context = getApplicationContext();
 			CharSequence text = "Pladen er fuld";
 			int duration = Toast.LENGTH_LONG;
@@ -237,10 +227,6 @@ public class SinglePlayerGameActivity extends Activity {
 			cleanGUI();
 
 			correctMove = true;
-			theGame.changeTurn();
-
 		}
-
 	}
-
 }
