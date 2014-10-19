@@ -49,10 +49,6 @@ public class TicTacToeGame implements ITicTacToeGame
 	@Override
 	public BoardFieldEnum WhoWon() 
 	{
-		if (_theBoard.WhoWon() == _theBot.getPlayerType()) 
-			_botScore++;
-		else if (_theBoard.WhoWon() == _player)
-			_playerScore++;
 		return _theBoard.WhoWon();
 	}
 
@@ -97,5 +93,14 @@ public class TicTacToeGame implements ITicTacToeGame
 	public BoardFieldEnum getPlayerType() 
 	{
 		return _player;
+	}
+
+	@Override
+	public void updateScore() 
+	{
+		if (_theBoard.WhoWon() == _theBot.getPlayerType()) 
+			_botScore++;
+		else if (_theBoard.WhoWon() == _player)
+			_playerScore++;	
 	}
 }

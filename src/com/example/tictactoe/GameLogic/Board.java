@@ -183,7 +183,11 @@ public class Board implements IBoard
 			}
 			return BoardFieldEnum.PLAYER_X;
 		}
-		return BoardFieldEnum.DRAW;
+		if (this.BoardIsFull() && this.HasWinner() == false)
+		{
+			return BoardFieldEnum.DRAW;
+		}
+		return null;
 	}
 	
 	/*
@@ -261,5 +265,11 @@ public class Board implements IBoard
 	private void setBoard(List<BoardFieldEnum> board)
 	{
 		_board = board;
+	}
+
+	@Override
+	public List<BoardFieldEnum> getBoard() 
+	{
+		return _board;
 	}
 }
