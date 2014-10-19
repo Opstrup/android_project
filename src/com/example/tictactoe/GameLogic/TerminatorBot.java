@@ -13,8 +13,9 @@ public class TerminatorBot implements IBot
 	}
 
 	@Override
-	public int move(IBoard theBoard) 
+	public int move(IBoard board) 
 	{
+		IBoard theBoard = board;
 		return calculateBestMove(theBoard, _player);
 	}
 	
