@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="board">board</string>
-    <string name="welcome" > Welcome to TicTacToe </string>
+    <string name="welcome" > Welcome </string>
     <string name="gameType" > GameType: </string>
     <string name="singlePlayerMode" > Single player mode </string>
   
