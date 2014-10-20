@@ -34,6 +34,7 @@
    		 
         <activity
 	        android:name=".SinglePlayerGameActivity"
+	        android:screenOrientation="portrait"
 	        android:label="@string/app_name" 
 	        android:launchMode="singleInstance"
 	        android:parentActivityName="com.example.tictactoe.SinglePlayerOpponentActivity" >

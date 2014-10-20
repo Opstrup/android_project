@@ -3,8 +3,8 @@ package com.example.tictactoe;
 import com.example.tictactoe.GameLogic.BoardFieldEnum;
 import com.example.tictactoe.GameLogic.IBot;
 import com.example.tictactoe.GameLogic.ITicTacToeGame;
+import com.example.tictactoe.GameLogic.NormalBot;
 import com.example.tictactoe.GameLogic.RandomBot;
-import com.example.tictactoe.GameLogic.TerminatorBot;
 import com.example.tictactoe.GameLogic.TicTacToeGame;
 
 import android.app.Activity;
@@ -68,7 +68,7 @@ public class SinglePlayerGameActivity extends Activity {
 		} 
 		else 
 		{
-			theBot = new TerminatorBot(BoardFieldEnum.PLAYER_O);
+			theBot = new NormalBot(BoardFieldEnum.PLAYER_O);
 			theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_X);
 			opponentText.setText("Terminator Opponent");
 		}
