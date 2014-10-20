@@ -7,8 +7,14 @@ import com.example.tictactoe.GameLogic.RandomBot;
 import com.example.tictactoe.GameLogic.TicTacToeGame;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -29,13 +35,24 @@ public class SinglePlayerGameActivity extends Activity {
 			R.id.ImageButton08 };
 	boolean correctMove = false;
 	boolean playerStarted = true;
+	Intent gameIntent;
+	
+	
+	//used for register alarm manager
+    PendingIntent pendingIntent;
+    //used to store running alarmmanager instance
+    AlarmManager alarmManager;
+    //Callback function for Alarmmanager event
+    BroadcastReceiver mReceiver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		RegisterAlarmBroadcast();
+		
 		setContentView(R.layout.activity_single_player_game);
-
-		Intent gameIntent = getIntent();
+		gameIntent = getIntent();
 
 		String msg = gameIntent.getStringExtra(SinglePlayerOpponentActivity.GameType_Message);
 		int gameTypeNumber = gameIntent.getIntExtra(
@@ -52,7 +69,58 @@ public class SinglePlayerGameActivity extends Activity {
 		{
 			opponentText.setText("Terminator Opponent");
 		}
+		
+		if (savedInstanceState != null) {
+			onRestoreInstanceState(savedInstanceState);
+		}
 	}
+	
+	
+
+	private void RegisterAlarmBroadcast() {
+		mReceiver = new BroadcastReceiver()
+        {
+            @Override
+            public void onReceive(Context context, Intent intent)
+            {
+            	NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            	PendingIntent pIntent = PendingIntent.getActivity(SinglePlayerGameActivity.this, 0, gameIntent, 0);
+            	
+            	Notification notification  = new Notification.Builder(SinglePlayerGameActivity.this)
+                		.setContentTitle("TicTacToe")
+        		        .setContentText("Continue the game")
+        		        .setSmallIcon(R.drawable.kryds)
+        		        .setContentIntent(pIntent)
+        		        .setAutoCancel(true)
+        		        .build();
+
+				notificationManager.notify(0,notification);                
+            }
+
+        };
+		
+        registerReceiver(mReceiver, new IntentFilter("com.example.tictactoe") );
+        pendingIntent = PendingIntent.getBroadcast( this, 0, new Intent("com.example.tictactoe"),0 );
+        alarmManager = (AlarmManager)(this.getSystemService( Context.ALARM_SERVICE ));
+	}
+	
+	private void UnregisterAlarmBroadcast()
+    {
+        alarmManager.cancel(pendingIntent);
+        getBaseContext().unregisterReceiver(mReceiver);
+    }
+
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		
+		alarmManager.set( AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (5000) , pendingIntent );
+	}
+
+
 
 	public void SetButton(View view) throws InterruptedException 
 	{
@@ -228,5 +296,5 @@ public class SinglePlayerGameActivity extends Activity {
 
 			correctMove = true;
 		}
-	}
+	}	
 }
