@@ -16,7 +16,10 @@ public class TerminatorBot implements IBot
 	public int move(IBoard board) 
 	{
 		IBoard theBoard = board;
-		return calculateBestMove(theBoard, _player);
+		int locationOnBoard = calculateBestMove(theBoard, _player);
+		board.UpdateBoard(_player, locationOnBoard);
+				
+		return locationOnBoard;
 	}
 	
 	/*

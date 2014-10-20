@@ -63,6 +63,8 @@ public class TicTacToeGame implements ITicTacToeGame
 	{
 		if (_whosTurn == BoardFieldEnum.PLAYER_O)
 			_whosTurn = BoardFieldEnum.PLAYER_X;
+		else
+			_whosTurn = BoardFieldEnum.PLAYER_O;
 	}
 
 	@Override
@@ -102,5 +104,11 @@ public class TicTacToeGame implements ITicTacToeGame
 			_botScore++;
 		else if (_theBoard.WhoWon() == _player)
 			_playerScore++;	
+	}
+
+	@Override
+	public void setBoard(IBoard board) 
+	{
+		_theBoard = board;	
 	}
 }

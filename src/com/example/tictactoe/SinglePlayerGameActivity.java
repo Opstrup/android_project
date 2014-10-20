@@ -4,6 +4,7 @@ import com.example.tictactoe.GameLogic.BoardFieldEnum;
 import com.example.tictactoe.GameLogic.IBot;
 import com.example.tictactoe.GameLogic.ITicTacToeGame;
 import com.example.tictactoe.GameLogic.RandomBot;
+import com.example.tictactoe.GameLogic.T1000Bot;
 import com.example.tictactoe.GameLogic.TerminatorBot;
 import com.example.tictactoe.GameLogic.TicTacToeGame;
 
@@ -51,7 +52,7 @@ public class SinglePlayerGameActivity extends Activity {
 		} 
 		else 
 		{
-			theBot = new TerminatorBot(BoardFieldEnum.PLAYER_O);
+			theBot = new T1000Bot(BoardFieldEnum.PLAYER_O);
 			theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_X);
 			opponentText.setText("Terminator Opponent");
 		}
@@ -141,9 +142,10 @@ public class SinglePlayerGameActivity extends Activity {
 
 		// Check for winner or Draw
 		checkBoard();
+		theGame.changeTurn();
 		
 		// bots turn
-		if (correctMove == true) 
+		if (theGame.whosTurn() == BoardFieldEnum.PLAYER_O) 
 		{
 //			if (theGame.BoardIsFull() == true) 
 //			{
@@ -154,9 +156,10 @@ public class SinglePlayerGameActivity extends Activity {
 			image.setImageResource(R.drawable.bolle);
 			checkBoard();
 			correctMove = false;
+			theGame.changeTurn();
 		}
 		
-		//theGame.changeTurn();
+		
 
 	}
 
