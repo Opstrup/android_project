@@ -14,4 +14,5 @@ public interface ITicTacToeGame
 	Boolean BoardIsFull();
 	Boolean UpdateBoard(int locationOnBoard);
 	BoardFieldEnum getPlayerType();
+	void updateScore();
 }

@@ -4,6 +4,7 @@ import com.example.tictactoe.GameLogic.BoardFieldEnum;
 import com.example.tictactoe.GameLogic.IBot;
 import com.example.tictactoe.GameLogic.ITicTacToeGame;
 import com.example.tictactoe.GameLogic.RandomBot;
+import com.example.tictactoe.GameLogic.TerminatorBot;
 import com.example.tictactoe.GameLogic.TicTacToeGame;
 
 import android.app.Activity;
@@ -67,6 +68,8 @@ public class SinglePlayerGameActivity extends Activity {
 		} 
 		else 
 		{
+			theBot = new TerminatorBot(BoardFieldEnum.PLAYER_O);
+			theGame = new TicTacToeGame(9, theBot, BoardFieldEnum.PLAYER_X);
 			opponentText.setText("Terminator Opponent");
 		}
 		
@@ -244,6 +247,7 @@ public class SinglePlayerGameActivity extends Activity {
 
 			if (theGame.WhoWon() == BoardFieldEnum.PLAYER_X) 
 			{
+				theGame.updateScore();
 				Context context = getApplicationContext();
 				CharSequence text = "Kryds Vinder";
 				int duration = Toast.LENGTH_LONG;
@@ -263,6 +267,7 @@ public class SinglePlayerGameActivity extends Activity {
 			
 			else 
 			{
+				theGame.updateScore();
 				Context context = getApplicationContext();
 				CharSequence text = "Bolle Vinder";
 				int duration = Toast.LENGTH_LONG;

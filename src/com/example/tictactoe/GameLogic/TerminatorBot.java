@@ -5,93 +5,102 @@ import java.util.List;
 
 public class TerminatorBot implements IBot
 {
-	BoardFieldEnum _playerType;
-	BoardFieldEnum _player = _playerType;
+	BoardFieldEnum _player;
 	
 	public TerminatorBot(BoardFieldEnum playerType)
 	{
-		_playerType = playerType;
+		_player = playerType;
+	}
+
+	@Override
+	public int move(IBoard board) 
+	{
+		IBoard theBoard = board;
+		return calculateBestMove(theBoard, _player);
 	}
 	
 	/*
-	 * 
+	 * bot always plays as O
 	 * best_score[0] = score
 	 * best_score[1] = position
 	 */
-	@Override
-	public int move(IBoard theBoard) {
-		
+	private int calculateBestMove(IBoard theBoard, BoardFieldEnum player) 
+	{
 		int[] best_score = {0, 0};
 		
 		if (theBoard.WhoWon() == BoardFieldEnum.PLAYER_O)
 		{
-			best_score[0] = -1;
+			best_score[0] = 1;
 			best_score[1] = -1;
-			return best_score[1];
-//			return (-1, (-1, -1))
+			return best_score[0];
 		}
 		
 		if (theBoard.WhoWon() == BoardFieldEnum.PLAYER_X)
 		{
-			best_score[0] = 1;
+			best_score[0] = -1;
 			best_score[1] = -1;
-			return best_score[1];
-//		    return (1, (-1, -1))
+			return best_score[0];
+		}
+		
+		if (theBoard.WhoWon() == BoardFieldEnum.DRAW) 
+		{
+			best_score[0] = 0;
+			best_score[1] = -1;
+			return best_score[0];
 		}
 		
 		    best_score[0] = 0;
 		    best_score[1] = -1;
 		    List<Object> moves = new ArrayList<Object>();
 		    List<Integer> score = new ArrayList<Integer>();
-		    
-		    for (Object empty_field : theBoard.GetEmptySquares()) 
+		    		    
+		    for (Integer empty_field : theBoard.GetEmptySquares()) 
 		    {
 		    	IBoard copy_board = theBoard.Clone();
-		    	copy_board.UpdateBoard(_player, 0);
-		    	if (_player == _playerType) 
-		    		_player = BoardFieldEnum.PLAYER_X;
+		    	copy_board.UpdateBoard(_player, empty_field);
+		    	BoardFieldEnum other_player;
+				if (player == BoardFieldEnum.PLAYER_O) 
+		    		other_player = BoardFieldEnum.PLAYER_X;
+				else
+					other_player = BoardFieldEnum.PLAYER_O;
 		    	
-		    	score.add(move(copy_board));
+		    	score.add(calculateBestMove(copy_board, other_player));
 		    	
 		    	//Winning move
-		    	if (score.get(0) * 1 == 1) 
-					return score.get(0);
+		    	if (_player == BoardFieldEnum.PLAYER_O) 
+		    	{
+		    		if (score.get(0) * 1 == 1) 
+						return empty_field;
+				} 
+		    	else if (_player == BoardFieldEnum.PLAYER_X) 
+		    	{
+		    		if (score.get(0) * 1 == -1) 
+						return empty_field;
+				}
 		    	
 		    	moves.add(empty_field);
 		    	
 		    	for (int i = 0; i < score.size(); i++) 
 		    	{
+					if (_player == BoardFieldEnum.PLAYER_X && best_score[0] >= (int) score.get(i))
+					{
+						best_score[1] = (Integer) moves.get(i);
+					}
 					
+					if (_player == BoardFieldEnum.PLAYER_O && best_score[0] <= (int) score.get(i))
+					{
+						best_score[1] = (Integer) moves.get(i);
+					}
 				}
 			}
 		    
-		    return 0;
-//		    for empty_field in board.get_empty_squares():
-//		        copy_board = board.clone()
-//		        copy_board.move(empty_field[0], empty_field[1], player)
-//		        score.append(mm_move(copy_board, provided.switch_player(player))[0])
-//
-//		        # Winning move
-//		        if score[0] * SCORES[player] is 1:
-//		            return (score[0], tuple(empty_field))
-//
-//		        moves.append(empty_field)
-//
-//		        for index in range(len(score)):
-//		            if player is provided.PLAYERX:
-//		                if best_score[0] <= score[index]:
-//		                    best_score = (score[index], (moves[index]))
-//		            elif player is provided.PLAYERO:
-//		                if best_score[0] >= score[index]:
-//		                    best_score =  (score[index], (moves[index]))
-//
-//		    return best_score
+		return best_score[1];
 	}
 
 	@Override
 	public BoardFieldEnum getPlayerType() 
 	{
-		return _playerType;
+		return _player;
 	}
 
 }
